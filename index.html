@@ -105,7 +105,10 @@ strong{color:var(--berry-deep)}
 .checks li b{display:block; font-family:"Poppins",sans-serif; font-weight:600; color:var(--ink); margin-bottom:2px; font-size:1.04em}
 
 /* sinais em bloco (Bloco 4/5) */
-.sign{border:1px solid var(--line); border-radius:14px; padding:18px 20px; margin:16px 0; background:#fffaf6}
+.sign{border:1px solid var(--line); border-radius:16px; margin:16px 0; background:#fffaf6; overflow:hidden}
+.sign .sig-img{width:100%; height:210px; background:#f0e5df}
+.sign .sig-img img{width:100%; height:100%; object-fit:cover; display:block}
+.sign .sig-body{padding:16px 22px 18px}
 .sign h3{margin:0 0 8px; font-size:1.12em; color:var(--berry-deep)}
 .sign p:last-child{margin-bottom:0}
 
@@ -202,6 +205,7 @@ details.faq .a p{margin:0}
 
 @media (max-width:640px){
   body{font-size:16.5px}
+  .sign .sig-img{height:172px}
   .page{min-height:86vh; padding:34px 22px 60px}
   .cover{min-height:92vh}
   .author img{width:104px; height:104px}
@@ -285,26 +289,34 @@ details.faq .a p{margin:0}
     <h2 class="title">Sinais de quando o bebê <span class="em">precisa de ajuda</span></h2>
 
     <div class="sign">
-      <h3>Mamadas longas e intermináveis</h3>
-      <p>Se as mamadas se estendem por muito tempo ou ocorrem em intervalos muito curtos, é sinal claro de que o bebê não está conseguindo extrair leite de forma satisfatória. Mamadas que ultrapassam 30 a 40 minutos, chegando a 1 hora ou mais, são um grande sinal de alerta. O natural é o bebê mamar e soltar o seio sozinho, assim como fazemos com a comida quando estamos satisfeitos. Não é normal o bebê querer ficar colado no seio o dia todo.</p>
+      <div class="sig-img"><img src="assets/mamadas-longas.jpg" alt="Bebê muito tempo no seio" loading="lazy"></div>
+      <div class="sig-body">
+        <h3>Mamadas longas e intermináveis</h3>
+        <p>Se as mamadas se estendem por muito tempo ou ocorrem em intervalos muito curtos, é sinal claro de que o bebê não está conseguindo extrair leite de forma satisfatória. Mamadas que ultrapassam 30 a 40 minutos, chegando a 1 hora ou mais, são um grande sinal de alerta. O natural é o bebê mamar e soltar o seio sozinho, assim como fazemos com a comida quando estamos satisfeitos. Não é normal o bebê querer ficar colado no seio o dia todo.</p>
+      </div>
     </div>
 
     <div class="sign">
-      <h3>Bebê sonolento ou "preguiçoso"</h3>
-      <p>Se o bebê adormece logo que começa a mamar, antes de estar satisfeito, e basta você mexer que ele já acorda querendo voltar ao seio… é sinal de que ele gasta uma energia tão grande pra mamar que se cansa antes da hora. <strong>Bebês não são preguiçosos, ninguém tem preguiça de se alimentar.</strong> Ele quer mamar, mas precisa de ajuda para conseguir ordenhas efetivas.</p>
+      <div class="sig-img"><img src="assets/sonolento.jpg" alt="Bebê acorda querendo voltar ao seio" loading="lazy"></div>
+      <div class="sig-body">
+        <h3>Bebê sonolento ou "preguiçoso"</h3>
+        <p>Se o bebê adormece logo que começa a mamar, antes de estar satisfeito, e basta você mexer que ele já acorda querendo voltar ao seio… é sinal de que ele gasta uma energia tão grande pra mamar que se cansa antes da hora. <strong>Bebês não são preguiçosos, ninguém tem preguiça de se alimentar.</strong> Ele quer mamar, mas precisa de ajuda para conseguir ordenhas efetivas.</p>
+      </div>
     </div>
 
     <div class="sign">
-      <h3>"O bebê não faz o peito de chupeta"</h3>
-      <p>Essa frase é cruel e não diz a verdade. O bebê está ali tentando se alimentar, com dificuldade. Sugar é a forma que ele tem de buscar alimento. Se quer ficar muito tempo no seio, é porque está levando todo esse tempo para extrair o leite de que precisa, não por outro motivo.</p>
+      <div class="sig-img"><img src="assets/chupeta.jpg" alt="Bebê quer ficar no seio" loading="lazy"></div>
+      <div class="sig-body">
+        <h3>"O bebê não faz o peito de chupeta"</h3>
+        <p>Essa frase é cruel e não diz a verdade. O bebê está ali tentando se alimentar, com dificuldade. Sugar é a forma que ele tem de buscar alimento. Se quer ficar muito tempo no seio, é porque está levando todo esse tempo para extrair o leite de que precisa, não por outro motivo.</p>
+      </div>
     </div>
 
     <div class="sign">
-      <h3>Calo no lábio</h3>
-      <p>O calo se forma como resposta ao atrito constante dos lábios durante a amamentação. Isso não é o esperado: o bebê está fazendo força com os lábios para compensar algo que não vai bem na extração do leite. Quem deve trabalhar para extrair o leite é a <strong>língua</strong> do bebê, não os lábios. Com a pega correta, a língua faz a ordenha e os lábios ficam relaxados, apenas vedando a boca. Todo calo é sinal de esforço repetitivo e desconforto, e na boquinha do bebê não é diferente.</p>
-      <div class="media">
-        <div class="frame"><img src="https://drive.google.com/thumbnail?id=1znrHkd1PutUh5LI0pLUmPWjceEE4Tlme&sz=w1000" alt="Calo no lábio do bebê" loading="lazy"></div>
-        <div class="cap">Calo no lábio do bebê.</div>
+      <div class="sig-img"><img src="assets/calo.jpg" alt="Calo no lábio do bebê" loading="lazy"></div>
+      <div class="sig-body">
+        <h3>Calo no lábio</h3>
+        <p>O calo se forma como resposta ao atrito constante dos lábios durante a amamentação. Isso não é o esperado: o bebê está fazendo força com os lábios para compensar algo que não vai bem na extração do leite. Quem deve trabalhar para extrair o leite é a <strong>língua</strong> do bebê, não os lábios. Com a pega correta, a língua faz a ordenha e os lábios ficam relaxados, apenas vedando a boca. Todo calo é sinal de esforço repetitivo e desconforto, e na boquinha do bebê não é diferente.</p>
       </div>
     </div>
 
@@ -320,15 +332,22 @@ details.faq .a p{margin:0}
   <article class="page" data-pg="6">
     <span class="kicker">Capítulo 5</span>
     <h2 class="title">Sentir dor ao amamentar <span class="em">não é normal</span></h2>
+    <div class="media"><div class="frame"><img src="assets/dor-intro.jpg" alt="Mãe sentindo dor ao amamentar" loading="lazy"></div></div>
     <p>A dor indica que a pega do bebê está superficial, o que causa lesões nos mamilos e dificulta a extração do leite. Mesmo aquela dor que dura poucos segundos: a mãe deixa de sentir rápido não porque parou de machucar, mas porque o corpo libera hormônios pra ela parar de sentir, só que continua machucando durante toda a mamada.</p>
 
     <div class="sign">
-      <h3>Fissuras</h3>
-      <p>São machucados muito doloridos, mas superficiais, e cicatrizam rápido, de um dia para o outro, assim que a pega é ajustada. Com a pega correta a mãe não sente dor mesmo com os seios machucados, porque o bico se posiciona no fundo da boca do bebê, sem pressão entre a língua e o céu da boca.</p>
+      <div class="sig-img"><img src="assets/fissuras.jpg" alt="Fissuras na amamentação" loading="lazy"></div>
+      <div class="sig-body">
+        <h3>Fissuras</h3>
+        <p>São machucados muito doloridos, mas superficiais, e cicatrizam rápido, de um dia para o outro, assim que a pega é ajustada. Com a pega correta a mãe não sente dor mesmo com os seios machucados, porque o bico se posiciona no fundo da boca do bebê, sem pressão entre a língua e o céu da boca.</p>
+      </div>
     </div>
     <div class="sign">
-      <h3>Bico em formato de batom</h3>
-      <p>O bico fica achatado por conta da posição em que o bebê abocanha, concentrando a sucção numa parte só, em vez de abocanhar a aréola para uma ordenha satisfatória.</p>
+      <div class="sig-img"><img src="assets/bico.jpg" alt="Bico em formato de batom" loading="lazy"></div>
+      <div class="sig-body">
+        <h3>Bico em formato de batom</h3>
+        <p>O bico fica achatado por conta da posição em que o bebê abocanha, concentrando a sucção numa parte só, em vez de abocanhar a aréola para uma ordenha satisfatória.</p>
+      </div>
     </div>
 
     <p>Dor para amamentar é um sinal ruim tanto para a mãe quanto para o bebê. A única forma de corrigir é <strong>ajustando a pega</strong>, para que ele mame de forma efetiva, saindo saciado do seio, sem te machucar.</p>
@@ -346,6 +365,7 @@ details.faq .a p{margin:0}
     <span class="kicker">A solução</span>
     <h2 class="title">Um jeito de ofertar o seio que <span class="em">deixa tudo isso para trás</span></h2>
     <p>Em poucos minutos você aprende a deixar a amamentação confortável para vocês dois. A partir daí:</p>
+    <div class="media"><div class="frame"><img src="assets/solucao.jpg" alt="Mãe amamentando tranquila" loading="lazy"></div></div>
     <ul class="checks plus">
       <li><b>O bebê extrai mais leite em menos tempo</b></li>
       <li><b>Os lábios ficam relaxados</b>, os calos cicatrizam e não voltam</li>
@@ -428,6 +448,7 @@ details.faq .a p{margin:0}
     <h2 class="title">Você não precisa continuar tentando <span class="em">sozinha</span></h2>
     <p class="lead">O Guia da Pega foi feito pra resolver exatamente o que você acabou de reconhecer no seu bebê: te mostrar, com vídeos práticos e bebês reais, como ajustar a pega em poucos minutos.</p>
     <p>Se quiser, some o acompanhamento pelo WhatsApp por +R$87.</p>
+    <div class="media"><div class="frame"><img src="assets/feliz.jpg" alt="Bebê mamando feliz" loading="lazy"></div></div>
 
     <div style="margin-top:26px">
       <a class="buy big" href="#" data-checkout>Quero Guia da Pega · R$67</a>
