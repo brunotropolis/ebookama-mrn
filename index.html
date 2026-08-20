@@ -3,7 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Guia da Pega · Ebook</title>
+<title>meu-bebê-não-sacia-no-seio.pdf</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<meta name="theme-color" content="#323336">
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -55,13 +57,20 @@ body{
 .viewer{padding:22px clamp(10px,3vw,26px) 60px}
 .page{
   position:relative;
+  display:flex; flex-direction:column; justify-content:center;
   max-width:var(--maxw); margin:0 auto 26px;
-  background:var(--sheet);
+  background-color:var(--sheet);
+  background-image:url("assets/sprig.svg");
+  background-repeat:no-repeat; background-position:right -6px top -6px; background-size:148px;
   border-radius:var(--radius);
   box-shadow:0 1px 0 rgba(0,0,0,.04), 0 18px 40px -22px rgba(90,50,60,.45);
   padding:clamp(30px,6vw,68px) clamp(24px,6vw,72px) clamp(56px,7vw,80px);
   min-height:1080px;
 }
+.page.t-cream{--sheet:#fdf6ec}
+.page.t-blush{--sheet:#fdecef}
+.page.t-lilac{--sheet:#f2ecfa}
+.page.t-beige{--sheet:#f6efe3}
 .page::after{ /* costura sutil de folha */
   content:""; position:absolute; left:0; right:0; bottom:0; height:4px;
   background:linear-gradient(180deg,transparent,rgba(120,70,80,.05));
@@ -185,23 +194,21 @@ details.faq .a{padding:0 20px 18px; color:var(--ink)}
 details.faq .a p{margin:0}
 
 /* ---------- COVER ---------- */
-.cover{
-  background:linear-gradient(155deg,#7a3350 0%, #b24e72 48%, #c96f4c 100%);
-  color:#fff; display:flex; flex-direction:column; padding:0; overflow:hidden;
-}
-.cover .inner{flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:clamp(40px,8vw,80px) clamp(26px,7vw,64px); position:relative}
-.cover::before{content:""; position:absolute; inset:0; background:radial-gradient(600px 300px at 80% 15%, rgba(255,255,255,.14), transparent 60%), radial-gradient(500px 300px at 10% 90%, rgba(255,255,255,.1), transparent 55%); pointer-events:none}
-.cover .eb{font-size:12px; font-weight:800; letter-spacing:.28em; text-transform:uppercase; opacity:.85; margin-bottom:20px}
-.cover h1{font-size:clamp(40px,10vw,74px); line-height:.98; color:#fff; margin:0}
-.cover h1 .it{display:block; font-style:italic; font-weight:500; font-size:.62em; opacity:.95; margin-top:6px}
-.cover .tag{max-width:30ch; margin:22px auto 0; font-size:1.12em; opacity:.95; line-height:1.5}
-.cover .who{margin-top:30px; display:flex; align-items:center; gap:12px; background:rgba(255,255,255,.14); padding:10px 16px 10px 10px; border-radius:999px}
-.cover .who img{width:46px; height:46px; border-radius:50%; object-fit:cover; border:2px solid rgba(255,255,255,.6)}
+.cover{background:#9d3f61; color:#fff; display:flex; flex-direction:column; padding:0; overflow:hidden}
+.cover .inner{flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:clamp(38px,7vw,70px) clamp(24px,7vw,58px); position:relative; z-index:2}
+.cov-orn{position:absolute; inset:0; width:100%; height:100%; z-index:1; pointer-events:none}
+.cov-title{margin:0; line-height:1.02; text-align:center; text-wrap:balance; color:#fff}
+.cov-title span{display:block}
+.cov-title .t1{font-weight:800; font-size:clamp(29px,7.4vw,49px); letter-spacing:-.5px}
+.cov-title .t2{font-weight:500; font-style:italic; font-size:clamp(16px,4vw,25px); opacity:.9; margin:2px 0}
+.cov-title .t3{font-weight:800; font-style:italic; font-size:clamp(33px,8.4vw,56px); letter-spacing:-.5px}
+.cover .tag{max-width:30ch; margin:16px auto 0; font-size:1.04em; opacity:.94; line-height:1.5}
+.cov-photo{margin:24px auto 2px; width:min(290px,64%); aspect-ratio:4/5; border-radius:150px 150px 26px 26px; overflow:hidden; box-shadow:0 22px 46px -18px rgba(0,0,0,.55); border:5px solid rgba(255,255,255,.5)}
+.cov-photo img{width:100%; height:100%; object-fit:cover; display:block}
+.cover .who{margin-top:20px; display:inline-flex; align-items:center; gap:12px; background:rgba(255,255,255,.16); padding:9px 18px 9px 9px; border-radius:999px}
+.cover .who img{width:44px; height:44px; border-radius:50%; object-fit:cover; border:2px solid rgba(255,255,255,.6)}
 .cover .who span{font-size:14px; text-align:left; line-height:1.25}
 .cover .who b{font-family:"Poppins",sans-serif; font-weight:600; display:block}
-.cover .scroll{position:absolute; bottom:26px; left:0; right:0; text-align:center; font-size:13px; font-weight:700; opacity:.9}
-.cover .scroll .chev{display:block; margin:6px auto 0; width:14px; height:14px; border-right:2px solid #fff; border-bottom:2px solid #fff; transform:rotate(45deg); animation:bob 1.4s infinite}
-@keyframes bob{0%,100%{transform:rotate(45deg) translate(0,0); opacity:.6}50%{transform:rotate(45deg) translate(3px,3px); opacity:1}}
 
 @media (max-width:640px){
   body{font-size:16.5px}
@@ -210,7 +217,7 @@ details.faq .a p{margin:0}
   .cover{min-height:92vh}
   .author img{width:104px; height:104px}
 }
-@media print{.bar,.progress,.cover .scroll{display:none}}
+@media print{.bar,.progress{display:none}}
 </style>
 </head>
 <body>
@@ -229,10 +236,32 @@ details.faq .a p{margin:0}
 
   <!-- ============ CAPA ============ -->
   <article class="page cover" data-pg="1">
+    <svg class="cov-orn" viewBox="0 0 420 760" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <circle cx="368" cy="66" r="132" fill="#fff" opacity="0.06"/>
+      <circle cx="36" cy="704" r="150" fill="#fff" opacity="0.05"/>
+      <g fill="#fff" opacity="0.14">
+        <ellipse cx="44" cy="74" rx="26" ry="11" transform="rotate(30 44 74)"/>
+        <ellipse cx="74" cy="54" rx="23" ry="9.5" transform="rotate(55 74 54)"/>
+        <ellipse cx="28" cy="112" rx="24" ry="10" transform="rotate(14 28 112)"/>
+        <path d="M20 42 C42 72 56 112 52 152" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/>
+      </g>
+      <g fill="#fff">
+        <circle cx="332" cy="206" r="3.2" opacity="0.34"/>
+        <circle cx="362" cy="244" r="2.2" opacity="0.3"/>
+        <circle cx="302" cy="252" r="2" opacity="0.28"/>
+        <circle cx="92" cy="470" r="2.6" opacity="0.3"/>
+        <circle cx="120" cy="500" r="2" opacity="0.26"/>
+      </g>
+      <path d="M0 694 C120 652 300 732 420 682 L420 760 L0 760 Z" fill="#fff" opacity="0.05"/>
+    </svg>
     <div class="inner">
-      <div class="eb">Ebook · Amamentação</div>
-      <h1>Por que meu bebê parece <span class="it">não saciar no seio?</span></h1>
+      <h1 class="cov-title">
+        <span class="t1">Por que meu bebê</span>
+        <span class="t2">parece</span>
+        <span class="t3">não saciar no seio?</span>
+      </h1>
       <p class="tag">Por que ele mama por horas e continua com fome, e como ajustar isso já na próxima mamada.</p>
+      <div class="cov-photo"><img src="assets/cover.jpg" alt="Bebê no seio"></div>
       <div class="who">
         <img src="https://bio.manualdorecemnascido.com.br/assets/day/profile.jpg" alt="Dayane Dos Anjos">
         <span><b>Dayane Dos Anjos</b>Consultora de amamentação</span>
@@ -241,7 +270,7 @@ details.faq .a p{margin:0}
   </article>
 
   <!-- ============ BLOCO 1 ============ -->
-  <article class="page" data-pg="2">
+  <article class="page t-blush" data-pg="2">
     <span class="kicker">Capítulo 1</span>
     <h2 class="title">Por que meu bebê parece <span class="em">não saciar</span> no seio?</h2>
     <p class="lead">Se o bebê parece não saciar no seio, mesmo depois de mamar continua parecendo estar com fome, ele está precisando de ajuda!</p>
@@ -251,7 +280,7 @@ details.faq .a p{margin:0}
   </article>
 
   <!-- ============ BLOCO 2 ============ -->
-  <article class="page" data-pg="3">
+  <article class="page t-cream" data-pg="3">
     <span class="kicker">Capítulo 2</span>
     <h2 class="title">O bebê pode passar horas no peito e mesmo assim <span class="em">continuar com fome.</span></h2>
     <p>O bebê consegue alimento através da sucção, e acredita que, se continuar sugando, o leite virá em algum momento. Por isso continua e continua, mesmo que a extração esteja baixa.</p>
@@ -261,7 +290,7 @@ details.faq .a p{margin:0}
   </article>
 
   <!-- ============ BLOCO 3 (VÍDEO) ============ -->
-  <article class="page" id="video" data-pg="4">
+  <article class="page t-cream" id="video" data-pg="4">
     <span class="kicker">Capítulo 3</span>
     <h2 class="title">Como saber se o bebê está <span class="em">mamando bem?</span></h2>
     <p>O bebê faz dois tipos de sucção: a <strong>nutritiva</strong>, onde ele de fato extrai leite, e a <strong>não nutritiva</strong>, onde suga mas não retira leite do seio. Saber diferenciar as duas é essencial para saber se o seu bebê está mamando bem.</p>
@@ -284,7 +313,7 @@ details.faq .a p{margin:0}
   </article>
 
   <!-- ============ BLOCO 4 (FOTO CALO + CTA leve 1) ============ -->
-  <article class="page" data-pg="5">
+  <article class="page t-beige" data-pg="5">
     <span class="kicker">Capítulo 4</span>
     <h2 class="title">Sinais de quando o bebê <span class="em">precisa de ajuda</span></h2>
 
@@ -329,7 +358,7 @@ details.faq .a p{margin:0}
   </article>
 
   <!-- ============ BLOCO 5 (dor + CTA leve 2) ============ -->
-  <article class="page" data-pg="6">
+  <article class="page t-lilac" data-pg="6">
     <span class="kicker">Capítulo 5</span>
     <h2 class="title">Sentir dor ao amamentar <span class="em">não é normal</span></h2>
     <div class="media"><div class="frame"><img src="assets/dor-intro.jpg" alt="Mãe sentindo dor ao amamentar" loading="lazy"></div></div>
@@ -361,7 +390,7 @@ details.faq .a p{margin:0}
   </article>
 
   <!-- ============ BLOCO 6 (OFERTA) ============ -->
-  <article class="page" id="oferta" data-pg="7">
+  <article class="page t-cream" id="oferta" data-pg="7">
     <span class="kicker">A solução</span>
     <h2 class="title">Um jeito de ofertar o seio que <span class="em">deixa tudo isso para trás</span></h2>
     <p>Em poucos minutos você aprende a deixar a amamentação confortável para vocês dois. A partir daí:</p>
@@ -399,7 +428,7 @@ details.faq .a p{margin:0}
   </article>
 
   <!-- ============ BLOCO 7 (DAY) ============ -->
-  <article class="page" data-pg="8">
+  <article class="page t-beige" data-pg="8">
     <span class="kicker">Quem vai te ensinar</span>
     <h2 class="title">Olá, eu sou a <span class="em">Dayane Dos Anjos</span></h2>
     <div class="author">
@@ -420,7 +449,7 @@ details.faq .a p{margin:0}
   </article>
 
   <!-- ============ BLOCO 8 (FAQ) ============ -->
-  <article class="page" data-pg="9">
+  <article class="page t-lilac" data-pg="9">
     <span class="kicker">Perguntas frequentes</span>
     <h2 class="title">Ficou com <span class="em">alguma dúvida?</span></h2>
 
@@ -443,7 +472,7 @@ details.faq .a p{margin:0}
   </article>
 
   <!-- ============ BLOCO 10 (CTA FINAL) ============ -->
-  <article class="page" data-pg="10">
+  <article class="page t-blush" data-pg="10">
     <span class="kicker">Pra terminar</span>
     <h2 class="title">Você não precisa continuar tentando <span class="em">sozinha</span></h2>
     <p class="lead">O Guia da Pega foi feito pra resolver exatamente o que você acabou de reconhecer no seu bebê: te mostrar, com vídeos práticos e bebês reais, como ajustar a pega em poucos minutos.</p>
