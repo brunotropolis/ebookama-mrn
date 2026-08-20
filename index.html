@@ -464,7 +464,7 @@ function prog(){
 }
 addEventListener('scroll',prog,{passive:true}); prog();
 
-// zoom (cara de leitor de PDF) — ajusta a largura das folhas
+// zoom (cara de leitor de PDF): ajusta a largura das folhas
 var W=820, zin=document.getElementById('zin'), zout=document.getElementById('zout');
 function setW(){document.documentElement.style.setProperty('--maxw',W+'px')}
 zin&&zin.addEventListener('click',function(){W=Math.min(1000,W+80);setW()});
