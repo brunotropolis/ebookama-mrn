@@ -1,0 +1,462 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Guia da Pega · Ebook</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --backdrop1:#efe6df; --backdrop2:#e4d7cf;
+  --sheet:#fffdfa;
+  --ink:#413039; --muted:#907e85;
+  --berry:#b24e72; --berry-deep:#8f3a59;
+  --terra:#c96f4c; --gold:#e3a31b;
+  --cream:#fbefe8; --line:#efe1db;
+  --radius:5px;
+  --maxw:820px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; color:var(--ink);
+  font-family:"Nunito",system-ui,sans-serif; font-size:18px; line-height:1.62;
+  background:
+    radial-gradient(1200px 600px at 50% -10%, #f7efe8 0%, transparent 60%),
+    linear-gradient(180deg,var(--backdrop1),var(--backdrop2));
+  background-attachment:fixed;
+  -webkit-text-size-adjust:100%;
+}
+
+/* ---------- top viewer bar (sensação de leitor de PDF) ---------- */
+.bar{
+  position:sticky; top:0; z-index:50;
+  display:flex; align-items:center; justify-content:space-between; gap:12px;
+  padding:9px clamp(14px,4vw,26px);
+  background:rgba(255,253,250,.82); backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.bar .doc{display:flex; align-items:center; gap:9px; min-width:0}
+.bar .doc b{font-family:"Fraunces",serif; font-weight:600; font-size:15px; letter-spacing:.2px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.bar .doc .ic{font-size:16px}
+.bar .pg{font-size:13px; color:var(--muted); font-weight:700; white-space:nowrap; font-variant-numeric:tabular-nums}
+.bar .pg b{color:var(--berry)}
+.progress{position:sticky; top:44px; z-index:49; height:3px; background:transparent}
+.progress > i{display:block; height:100%; width:0; background:linear-gradient(90deg,var(--berry),var(--terra)); transition:width .12s linear}
+
+/* ---------- pages ---------- */
+.viewer{padding:22px clamp(10px,3vw,26px) 60px}
+.page{
+  position:relative;
+  max-width:var(--maxw); margin:0 auto 26px;
+  background:var(--sheet);
+  border-radius:var(--radius);
+  box-shadow:0 1px 0 rgba(0,0,0,.04), 0 18px 40px -22px rgba(90,50,60,.45);
+  padding:clamp(30px,6vw,68px) clamp(24px,6vw,72px) clamp(56px,7vw,80px);
+  min-height:1080px;
+}
+.page::after{ /* costura sutil de folha */
+  content:""; position:absolute; left:0; right:0; bottom:0; height:4px;
+  background:linear-gradient(180deg,transparent,rgba(120,70,80,.05));
+  border-radius:0 0 var(--radius) var(--radius);
+}
+.pnum{
+  position:absolute; left:0; right:0; bottom:26px; text-align:center;
+  font-size:12.5px; letter-spacing:.14em; color:#c3b0ac; font-weight:700;
+}
+.pnum::before,.pnum::after{content:"·"; margin:0 8px; color:#dcc9c4}
+
+/* kicker + headings */
+.kicker{
+  display:inline-block; font-size:12px; font-weight:800; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--berry); background:var(--cream); padding:6px 12px; border-radius:999px; margin-bottom:18px;
+}
+h1,h2,h3{font-family:"Fraunces",serif; font-weight:600; line-height:1.16; color:var(--ink); letter-spacing:.2px}
+h2.title{font-size:clamp(26px,5.4vw,38px); margin:0 0 22px; text-wrap:balance}
+h2.title .em{color:var(--berry); font-style:italic}
+p{margin:0 0 18px}
+p .hl{background:linear-gradient(180deg,transparent 62%, #ffe0cf 62%); padding:0 2px}
+strong{color:var(--berry-deep)}
+.lead{font-size:1.06em}
+
+/* callout / destaque */
+.note{
+  border-left:4px solid var(--terra); background:var(--cream);
+  padding:16px 20px; border-radius:0 12px 12px 0; margin:24px 0; font-size:.98em;
+}
+.note b{color:var(--terra)}
+
+/* lista de sinais / benefícios */
+.checks{list-style:none; padding:0; margin:22px 0}
+.checks li{position:relative; padding:0 0 0 38px; margin-bottom:16px}
+.checks li::before{
+  content:""; position:absolute; left:0; top:2px; width:24px; height:24px; border-radius:50%;
+  background:var(--berry) radial-gradient(circle at 50% 42%, #fff 0 2px, transparent 3px);
+  box-shadow:0 4px 10px -3px rgba(178,78,114,.6);
+}
+.checks.plus li::before{background:#2fbf6f; box-shadow:0 4px 10px -3px rgba(47,191,111,.6)}
+.checks li b{display:block; font-family:"Fraunces",serif; font-weight:600; color:var(--ink); margin-bottom:2px; font-size:1.04em}
+
+/* sinais em bloco (Bloco 4/5) */
+.sign{border:1px solid var(--line); border-radius:14px; padding:18px 20px; margin:16px 0; background:#fffaf6}
+.sign h3{margin:0 0 8px; font-size:1.12em; color:var(--berry-deep)}
+.sign p:last-child{margin-bottom:0}
+
+/* mídia */
+.media{margin:26px 0}
+.frame{position:relative; width:100%; border-radius:14px; overflow:hidden; box-shadow:0 14px 34px -18px rgba(80,40,50,.6); background:#000}
+.frame.video{aspect-ratio:16/9}
+.frame.video iframe{position:absolute; inset:0; width:100%; height:100%; border:0}
+.frame img{display:block; width:100%; height:auto}
+.cap{font-size:14px; color:var(--muted); text-align:center; margin-top:10px; font-style:italic}
+.split{display:flex; gap:10px; justify-content:center; margin:6px 0 2px; flex-wrap:wrap}
+.split span{font-size:13px; font-weight:800; padding:5px 12px; border-radius:999px}
+.split .n{background:#eafaf0; color:#1c8a4e}
+.split .nn{background:#fdeef0; color:#b23a56}
+
+/* CTA */
+.buy{
+  display:flex; align-items:center; justify-content:center; gap:8px; text-align:center; text-decoration:none;
+  background:linear-gradient(135deg,#16a34a,#2fbf6f); color:#fff; font-weight:800; font-family:"Nunito";
+  padding:17px 26px; border-radius:14px; font-size:1.12em; letter-spacing:.2px;
+  box-shadow:0 14px 26px -12px rgba(22,163,74,.8); margin:8px 0;
+  transition:transform .12s ease, box-shadow .12s ease;
+}
+.buy:hover{transform:translateY(-2px); box-shadow:0 18px 30px -12px rgba(22,163,74,.85)}
+.buy.big{font-size:1.22em; padding:20px 26px}
+.buy-soft{
+  display:inline-flex; align-items:center; gap:8px; text-decoration:none;
+  background:#fff; color:var(--berry-deep); border:2px solid var(--berry);
+  font-weight:800; padding:12px 22px; border-radius:12px; margin-top:6px;
+  transition:background .12s, color .12s;
+}
+.buy-soft:hover{background:var(--berry); color:#fff}
+.cta-soft{background:var(--cream); border-radius:16px; padding:22px; margin:28px 0 0; text-align:center}
+.cta-soft p{margin:0 0 4px; font-weight:700}
+
+.reassure{display:flex; gap:14px; flex-wrap:wrap; justify-content:center; margin-top:12px; font-size:13.5px; color:var(--muted); font-weight:700}
+.reassure span{display:inline-flex; align-items:center; gap:6px}
+
+/* oferta box */
+.offer{
+  margin-top:26px; border:2px solid var(--berry); border-radius:20px; overflow:hidden;
+  box-shadow:0 20px 44px -24px rgba(143,58,89,.6);
+}
+.offer .head{background:linear-gradient(135deg,var(--berry),var(--berry-deep)); color:#fff; padding:22px 24px; text-align:center}
+.offer .head .name{font-family:"Fraunces",serif; font-weight:600; font-size:1.7em}
+.offer .head .sub{opacity:.92; font-size:.95em; margin-top:2px}
+.offer .body{padding:24px}
+.price{text-align:center; margin:4px 0 18px}
+.price .big{font-family:"Fraunces",serif; font-size:2.6em; color:var(--berry-deep); font-weight:600; line-height:1}
+.price .cents{font-size:.5em; vertical-align:super}
+.price .desc{color:var(--muted); font-weight:700; margin-top:4px}
+.bump{
+  margin-top:16px; border:2px dashed var(--terra); border-radius:14px; padding:16px 18px; background:#fff7f2;
+}
+.bump .tag{display:inline-block; font-size:11px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:var(--terra); background:#fdece2; padding:4px 10px; border-radius:999px; margin-bottom:8px}
+.bump b{font-family:"Fraunces",serif; color:var(--ink)}
+.bump .buy{margin-top:12px}
+
+/* Day */
+.author{display:flex; gap:22px; align-items:flex-start; margin:6px 0 20px; flex-wrap:wrap}
+.author img{width:130px; height:130px; border-radius:50%; object-fit:cover; box-shadow:0 12px 26px -12px rgba(143,58,89,.7); flex:0 0 auto}
+.stats{display:flex; gap:10px; flex-wrap:wrap; margin-top:10px}
+.stats .s{background:var(--cream); border-radius:12px; padding:10px 14px; text-align:center; flex:1 1 120px}
+.stats .s b{display:block; font-family:"Fraunces",serif; font-size:1.25em; color:var(--berry-deep)}
+.stats .s span{font-size:12px; color:var(--muted); font-weight:700}
+
+/* FAQ */
+details.faq{border:1px solid var(--line); border-radius:12px; margin:12px 0; background:#fffaf6; overflow:hidden}
+details.faq summary{list-style:none; cursor:pointer; padding:16px 46px 16px 20px; font-family:"Fraunces",serif; font-weight:600; font-size:1.05em; position:relative}
+details.faq summary::-webkit-details-marker{display:none}
+details.faq summary::after{content:"+"; position:absolute; right:18px; top:50%; transform:translateY(-50%); font-size:22px; color:var(--berry); font-weight:400; transition:transform .2s}
+details.faq[open] summary::after{transform:translateY(-50%) rotate(45deg)}
+details.faq .a{padding:0 20px 18px; color:var(--ink)}
+details.faq .a p{margin:0}
+
+/* ---------- COVER ---------- */
+.cover{
+  background:linear-gradient(155deg,#7a3350 0%, #b24e72 48%, #c96f4c 100%);
+  color:#fff; display:flex; flex-direction:column; padding:0; overflow:hidden;
+}
+.cover .inner{flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:clamp(40px,8vw,80px) clamp(26px,7vw,64px); position:relative}
+.cover::before{content:""; position:absolute; inset:0; background:radial-gradient(600px 300px at 80% 15%, rgba(255,255,255,.14), transparent 60%), radial-gradient(500px 300px at 10% 90%, rgba(255,255,255,.1), transparent 55%); pointer-events:none}
+.cover .eb{font-size:12px; font-weight:800; letter-spacing:.28em; text-transform:uppercase; opacity:.85; margin-bottom:20px}
+.cover h1{font-size:clamp(40px,10vw,74px); line-height:.98; color:#fff; margin:0}
+.cover h1 .it{display:block; font-style:italic; font-weight:500; font-size:.62em; opacity:.95; margin-top:6px}
+.cover .tag{max-width:30ch; margin:22px auto 0; font-size:1.12em; opacity:.95; line-height:1.5}
+.cover .who{margin-top:30px; display:flex; align-items:center; gap:12px; background:rgba(255,255,255,.14); padding:10px 16px 10px 10px; border-radius:999px}
+.cover .who img{width:46px; height:46px; border-radius:50%; object-fit:cover; border:2px solid rgba(255,255,255,.6)}
+.cover .who span{font-size:14px; text-align:left; line-height:1.25}
+.cover .who b{font-family:"Fraunces",serif; font-weight:600; display:block}
+.cover .scroll{position:absolute; bottom:26px; left:0; right:0; text-align:center; font-size:13px; font-weight:700; opacity:.9}
+.cover .scroll .chev{display:block; margin:6px auto 0; width:14px; height:14px; border-right:2px solid #fff; border-bottom:2px solid #fff; transform:rotate(45deg); animation:bob 1.4s infinite}
+@keyframes bob{0%,100%{transform:rotate(45deg) translate(0,0); opacity:.6}50%{transform:rotate(45deg) translate(3px,3px); opacity:1}}
+
+@media (max-width:640px){
+  body{font-size:16.5px}
+  .page{min-height:86vh; padding:34px 22px 60px}
+  .cover{min-height:92vh}
+  .author img{width:104px; height:104px}
+}
+@media print{.bar,.progress,.cover .scroll{display:none}}
+</style>
+</head>
+<body>
+
+<!-- CHECKOUT: trocar pela URL real do checkout Greenn do Guia da Pega quando o Bruno mandar -->
+<div class="bar">
+  <div class="doc"><span class="ic">📖</span><b>Guia da Pega</b></div>
+  <div class="pg">Página <b id="curpg">1</b> / 10</div>
+</div>
+<div class="progress"><i id="bar"></i></div>
+
+<main class="viewer">
+
+  <!-- ============ CAPA ============ -->
+  <article class="page cover" data-pg="1">
+    <div class="inner">
+      <div class="eb">Ebook · Amamentação</div>
+      <h1>Guia da Pega<span class="it">quando o bebê parece não saciar no seio</span></h1>
+      <p class="tag">Por que ele mama por horas e continua com fome — e como ajustar isso já na próxima mamada.</p>
+      <div class="who">
+        <img src="https://bio.manualdorecemnascido.com.br/assets/day/profile.jpg" alt="Dayane Dos Anjos">
+        <span><b>Dayane Dos Anjos</b>Consultora de amamentação</span>
+      </div>
+    </div>
+    <div class="scroll">role para ler<span class="chev"></span></div>
+  </article>
+
+  <!-- ============ BLOCO 1 ============ -->
+  <article class="page" data-pg="2">
+    <span class="kicker">Capítulo 1</span>
+    <h2 class="title">Por que meu bebê parece <span class="em">não saciar</span> no seio?</h2>
+    <p class="lead">Se o bebê parece não saciar no seio — mesmo depois de mamar continua parecendo estar com fome — ele está precisando de ajuda!</p>
+    <p>Muitas pessoas pensam que a pega correta se resume ao bebê acoplar no seio e sugar, mas acoplar e sugar é o que o recém-nascido faz com tudo que passa perto da boca. É como se ele viesse programado para isso, porque sabe que é através da sucção que consegue alimento.</p>
+    <p>Porém, para extrair leite de forma satisfatória, o bebê precisa da <strong>pega correta</strong> — que é muito mais do que apenas sugar de qualquer maneira.</p>
+    <div class="pnum">2</div>
+  </article>
+
+  <!-- ============ BLOCO 2 ============ -->
+  <article class="page" data-pg="3">
+    <span class="kicker">Capítulo 2</span>
+    <h2 class="title">O bebê pode passar horas no peito e mesmo assim <span class="em">continuar com fome.</span></h2>
+    <p>O bebê consegue alimento através da sucção, e acredita que, se continuar sugando, o leite virá em algum momento. Por isso continua e continua, mesmo que a extração esteja baixa.</p>
+    <p>O fato de não conseguir extrair leite de forma satisfatória <strong>não significa que a mãe não produz leite suficiente</strong>. A dificuldade está na forma como o bebê abocanha e faz a extração, não na produção. É muito comum mães viverem essas dificuldades na amamentação com o seio pingando leite ou até empedrado.</p>
+    <div class="note"><b>Fique atenta aos sinais.</b> É observando cada um deles que se identifica a real dificuldade — e se encontra a solução.</div>
+    <div class="pnum">3</div>
+  </article>
+
+  <!-- ============ BLOCO 3 (VÍDEO) ============ -->
+  <article class="page" id="video" data-pg="4">
+    <span class="kicker">Capítulo 3</span>
+    <h2 class="title">Como saber se o bebê está <span class="em">mamando bem?</span></h2>
+    <p>O bebê faz dois tipos de sucção: a <strong>nutritiva</strong>, onde ele de fato extrai leite, e a <strong>não nutritiva</strong>, onde suga mas não retira leite do seio. Saber diferenciar as duas é essencial para saber se o seu bebê está mamando bem.</p>
+    <p>Na <b>sucção nutritiva</b>, esperada desde o início da mamada, o bebê mama em ritmo mais lento e dá pra ver os movimentos de deglutição. O esperado é que ele sugue no máximo 3 vezes e engula. Aqui ele está efetivamente se alimentando.</p>
+    <p>Na <b>sucção não nutritiva</b>, o ritmo é mais rápido, sem deglutição frequente. É esperada no final da mamada, logo antes do bebê adormecer, quando ele já está saciado.</p>
+    <p>Se o bebê faz a sucção não nutritiva desde o início, ou em boa parte da mamada, ele não está fazendo isso porque quer. <strong>O bebê está tentando extrair alimento e não está conseguindo.</strong> Esse é um grande sinal de alerta.</p>
+
+    <div class="media">
+      <p style="text-align:center;margin-bottom:10px">Veja no vídeo a diferença entre as sucções:</p>
+      <div class="split"><span class="n">◀ Esquerda · Nutritiva</span><span class="nn">Direita · Não nutritiva ▶</span></div>
+      <div class="frame video">
+        <iframe src="https://drive.google.com/file/d/10qBANI4zvhArv0VSxbXxoxE-8WmKv-vL/preview" allow="autoplay" allowfullscreen></iframe>
+      </div>
+      <div class="cap">Observe a papada da bebê: é a mesma de quando ela engole leite — o movimento é grande.</div>
+    </div>
+
+    <p>Mamadas longas, intermináveis, de intervalos curtos, dor para amamentar, fissuras ou calo no lábio do bebê também são sinais importantes a se observar. Mesmo que o bebê esteja ganhando peso bem, esses sinais mostram que ele está se esforçando muito além do necessário para se alimentar.</p>
+    <p><em>Vou te explicar cada um desses sinais. →</em></p>
+    <div class="pnum">4</div>
+  </article>
+
+  <!-- ============ BLOCO 4 (FOTO CALO + CTA leve 1) ============ -->
+  <article class="page" data-pg="5">
+    <span class="kicker">Capítulo 4</span>
+    <h2 class="title">Sinais de quando o bebê <span class="em">precisa de ajuda</span></h2>
+
+    <div class="sign">
+      <h3>Mamadas longas e intermináveis</h3>
+      <p>Se as mamadas se estendem por muito tempo ou ocorrem em intervalos muito curtos, é sinal claro de que o bebê não está conseguindo extrair leite de forma satisfatória. Mamadas que ultrapassam 30 a 40 minutos, chegando a 1 hora ou mais, são um grande sinal de alerta. O natural é o bebê mamar e soltar o seio sozinho — assim como fazemos com a comida quando estamos satisfeitos. Não é normal o bebê querer ficar colado no seio o dia todo.</p>
+    </div>
+
+    <div class="sign">
+      <h3>Bebê sonolento ou "preguiçoso"</h3>
+      <p>Se o bebê adormece logo que começa a mamar, antes de estar satisfeito, e basta você mexer que ele já acorda querendo voltar ao seio… é sinal de que ele gasta uma energia tão grande pra mamar que se cansa antes da hora. <strong>Bebês não são preguiçosos — ninguém tem preguiça de se alimentar.</strong> Ele quer mamar, mas precisa de ajuda para conseguir ordenhas efetivas.</p>
+    </div>
+
+    <div class="sign">
+      <h3>"O bebê não faz o peito de chupeta"</h3>
+      <p>Essa frase é cruel e não diz a verdade. O bebê está ali tentando se alimentar, com dificuldade. Sugar é a forma que ele tem de buscar alimento. Se quer ficar muito tempo no seio, é porque está levando todo esse tempo para extrair o leite de que precisa — não por outro motivo.</p>
+    </div>
+
+    <div class="sign">
+      <h3>Calo no lábio</h3>
+      <p>O calo se forma como resposta ao atrito constante dos lábios durante a amamentação. Isso não é o esperado: o bebê está fazendo força com os lábios para compensar algo que não vai bem na extração do leite. Quem deve trabalhar para extrair o leite é a <strong>língua</strong> do bebê, não os lábios. Com a pega correta, a língua faz a ordenha e os lábios ficam relaxados, apenas vedando a boca. Todo calo é sinal de esforço repetitivo e desconforto — na boquinha do bebê não é diferente.</p>
+      <div class="media">
+        <div class="frame"><img src="https://drive.google.com/thumbnail?id=1znrHkd1PutUh5LI0pLUmPWjceEE4Tlme&sz=w1000" alt="Calo no lábio do bebê" loading="lazy"></div>
+        <div class="cap">Calo no lábio do bebê.</div>
+      </div>
+    </div>
+
+    <div class="cta-soft">
+      <p>Reconheceu um ou mais desses sinais no seu bebê?</p>
+      <p style="font-weight:400;color:var(--muted);margin-bottom:14px">Existe um jeito rápido de ajustar isso.</p>
+      <a class="buy-soft" href="#oferta">Quero!! →</a>
+    </div>
+    <div class="pnum">5</div>
+  </article>
+
+  <!-- ============ BLOCO 5 (dor + CTA leve 2) ============ -->
+  <article class="page" data-pg="6">
+    <span class="kicker">Capítulo 5</span>
+    <h2 class="title">Sentir dor ao amamentar <span class="em">não é normal</span></h2>
+    <p>A dor indica que a pega do bebê está superficial, o que causa lesões nos mamilos e dificulta a extração do leite. Mesmo aquela dor que dura poucos segundos: a mãe deixa de sentir rápido não porque parou de machucar, mas porque o corpo libera hormônios pra ela parar de sentir — só que continua machucando durante toda a mamada.</p>
+
+    <div class="sign">
+      <h3>Fissuras</h3>
+      <p>São machucados muito doloridos, mas superficiais, e cicatrizam rápido — de um dia para o outro — assim que a pega é ajustada. Com a pega correta a mãe não sente dor mesmo com os seios machucados, porque o bico se posiciona no fundo da boca do bebê, sem pressão entre a língua e o céu da boca.</p>
+    </div>
+    <div class="sign">
+      <h3>Bico em formato de batom</h3>
+      <p>O bico fica achatado por conta da posição em que o bebê abocanha, concentrando a sucção numa parte só, em vez de abocanhar a aréola para uma ordenha satisfatória.</p>
+    </div>
+
+    <p>Dor para amamentar é um sinal ruim tanto para a mãe quanto para o bebê. A única forma de corrigir é <strong>ajustando a pega</strong>, para que ele mame de forma efetiva, saindo saciado do seio, sem te machucar.</p>
+
+    <div class="cta-soft">
+      <p>Dá pra facilitar a pega pra mãe e pro bebê</p>
+      <p style="font-weight:400;color:var(--muted);margin-bottom:14px">Para amamentar de forma tranquila e sem desconforto.</p>
+      <a class="buy-soft" href="#oferta">Quero!! →</a>
+    </div>
+    <div class="pnum">6</div>
+  </article>
+
+  <!-- ============ BLOCO 6 (OFERTA) ============ -->
+  <article class="page" id="oferta" data-pg="7">
+    <span class="kicker">A solução</span>
+    <h2 class="title">Um jeito de ofertar o seio que <span class="em">deixa tudo isso para trás</span></h2>
+    <p>Em poucos minutos você aprende a deixar a amamentação confortável para vocês dois. A partir daí:</p>
+    <ul class="checks plus">
+      <li><b>O bebê extrai mais leite em menos tempo</b></li>
+      <li><b>Os lábios ficam relaxados</b> — os calos cicatrizam e não voltam</li>
+      <li><b>Ele fica saciado por mais tempo</b> — o intervalo entre as mamadas aumenta</li>
+      <li><b>A dor vai embora</b>, mesmo com o seio machucado, porque ele passa a sugar de um jeito que não machuca</li>
+    </ul>
+
+    <div class="offer">
+      <div class="head">
+        <div class="name">Guia da Pega</div>
+        <div class="sub">Corrija a amamentação com uma condição especial</div>
+      </div>
+      <div class="body">
+        <div class="price">
+          <div class="big">R$67<span class="cents"> à vista</span></div>
+          <div class="desc">no Pix · ou 12x de R$6,89</div>
+        </div>
+        <a class="buy big" href="#" data-checkout>Quero!!</a>
+        <div class="reassure">
+          <span>⚡ Acesso imediato</span><span>🔒 Compra 100% segura</span><span>↩️ Garantia de 7 dias</span>
+        </div>
+
+        <div class="bump">
+          <span class="tag">Adicione se quiser</span>
+          <p><b>Guia da Pega + Consultora</b> — acompanhamento com consultora de amamentação direto no seu WhatsApp, pra te orientar e tirar suas dúvidas, por <strong>+R$87</strong>.</p>
+          <a class="buy" href="#" data-checkout-bump>Quero!!</a>
+        </div>
+      </div>
+    </div>
+    <div class="pnum">7</div>
+  </article>
+
+  <!-- ============ BLOCO 7 (DAY) ============ -->
+  <article class="page" data-pg="8">
+    <span class="kicker">Quem vai te ensinar</span>
+    <h2 class="title">Olá, eu sou a <span class="em">Dayane Dos Anjos</span></h2>
+    <div class="author">
+      <img src="https://bio.manualdorecemnascido.com.br/assets/day/profile.jpg" alt="Dayane Dos Anjos">
+      <div>
+        <p style="margin-bottom:10px">Consultora de amamentação, sono e cuidados com o bebê.</p>
+        <div class="stats">
+          <div class="s"><b>+21 mil</b><span>alunas</span></div>
+          <div class="s"><b>+799 mil</b><span>inscritos</span></div>
+          <div class="s"><b>+625 mil</b><span>seguidores</span></div>
+          <div class="s"><b>+620 mil</b><span>seguidores</span></div>
+        </div>
+      </div>
+    </div>
+    <p>As primeiras semanas decidem o sucesso da amamentação — mas é justamente quando a mãe fica mais sozinha, sem uma orientação clara. Quando a dor, a insegurança e o cansaço tomam conta, o desmame precoce acaba ganhando espaço em muitas famílias.</p>
+    <p>Foi por isso que criei um jeito de <strong>facilitar a pega para o bebê</strong>: pra dor aliviar na hora e pro bebê passar a mamar de verdade — tirando mais leite, em menos tempo, ficando satisfeito por intervalos mais longos.</p>
+    <div class="pnum">8</div>
+  </article>
+
+  <!-- ============ BLOCO 8 (FAQ) ============ -->
+  <article class="page" data-pg="9">
+    <span class="kicker">Perguntas frequentes</span>
+    <h2 class="title">Ficou com <span class="em">alguma dúvida?</span></h2>
+
+    <details class="faq"><summary>Consigo aplicar mesmo sendo um curso online e não presencial?</summary><div class="a"><p>Sim, e muitas vezes funciona até melhor. Um profissional presencial te ensina uma vez; mas quem vai colocar em prática nas próximas mamadas é você. O curso te mostra exatamente como fazer isso, você pode rever quantas vezes quiser, paga muito menos e não precisa esperar marcação: resolve agora, na próxima mamada.</p></div></details>
+
+    <details class="faq"><summary>Pega correta é a famosa boca de peixinho?</summary><div class="a"><p>A pega correta não se resume à boca de peixinho. Há muito mais para se atentar por fora e por dentro da boca do bebê, e é exatamente isso que você aprende no Guia da Pega.</p></div></details>
+
+    <details class="faq"><summary>Dá mesmo para ajustar a pega já na próxima mamada?</summary><div class="a"><p>Sim! Você assiste ao conteúdo e já coloca em prática. Como o curso ensina a facilitar a pega para o bebê, você vai ver ele pegar com mais facilidade e mamar melhor. Aplicando o passo a passo com atenção, os resultados vêm rápido — e a cada mamada fica melhor.</p></div></details>
+
+    <details class="faq"><summary>Qual é a forma de pagamento?</summary><div class="a"><p>Cartão, Pix ou boleto. No cartão você pode parcelar em até 12x.</p></div></details>
+
+    <details class="faq"><summary>Qual é o prazo de acesso do curso?</summary><div class="a"><p>Acesso por 12 meses, 100% online. Você pode assistir quantas vezes quiser nesse período.</p></div></details>
+
+    <details class="faq"><summary>Como funciona o prazo de garantia?</summary><div class="a"><p>É o período para você pedir o reembolso integral caso o produto não seja satisfatório. Solicitando pela plataforma Greenn em até 7 dias da compra, o reembolso é processado automaticamente em até 5 dias.</p></div></details>
+
+    <details class="faq"><summary>Como acesso meu produto?</summary><div class="a"><p>O curso fica em uma plataforma do Manual do Recém-Nascido. Você recebe o acesso por e-mail e WhatsApp 🙂</p></div></details>
+
+    <details class="faq"><summary>Esse curso tem acompanhamento no WhatsApp?</summary><div class="a"><p>Não. Ele é a versão Pocket do curso Técnica Dos Anjos: aqui você aprende especificamente essa técnica para já aplicar agora. Se quiser, depois você pode adquirir o acompanhamento à parte.</p></div></details>
+    <div class="pnum">9</div>
+  </article>
+
+  <!-- ============ BLOCO 10 (CTA FINAL) ============ -->
+  <article class="page" data-pg="10">
+    <span class="kicker">Pra terminar</span>
+    <h2 class="title">Você não precisa continuar tentando <span class="em">sozinha</span></h2>
+    <p class="lead">O Guia da Pega foi feito pra resolver exatamente o que você acabou de reconhecer no seu bebê: te mostrar, com vídeos práticos e bebês reais, como ajustar a pega em poucos minutos.</p>
+    <p>Se quiser, some o acompanhamento pelo WhatsApp por +R$87.</p>
+
+    <div style="margin-top:26px">
+      <a class="buy big" href="#" data-checkout>Quero Guia da Pega · R$67</a>
+      <a class="buy" href="#" data-checkout-bump style="background:linear-gradient(135deg,#8f3a59,#b24e72);box-shadow:0 14px 26px -12px rgba(143,58,89,.8)">Quero Guia da Pega + Acompanhamento · R$164</a>
+      <div class="reassure" style="margin-top:16px"><span>⚡ Acesso imediato</span><span>🔒 Compra segura</span><span>↩️ Garantia de 7 dias</span></div>
+    </div>
+    <div class="pnum">10</div>
+  </article>
+
+</main>
+
+<script>
+// modo captura (só p/ screenshot: ?shot=N isola uma página)
+(function(){var s=new URLSearchParams(location.search).get('shot');if(!s)return;
+document.querySelectorAll('.page').forEach(function(p){if(p.dataset.pg!==s){p.style.display='none';}else{p.style.minHeight='auto';}});})();
+
+// checkout (trocar CHECKOUT/BUMP pela URL real do Greenn)
+var CHECKOUT = "https://tdapocket.manualdorecemnascido.com.br";
+var CHECKOUT_BUMP = "https://tdapocket.manualdorecemnascido.com.br";
+document.querySelectorAll('[data-checkout]').forEach(function(a){a.href=CHECKOUT});
+document.querySelectorAll('[data-checkout-bump]').forEach(function(a){a.href=CHECKOUT_BUMP});
+
+// indicador de página + barra de progresso (sensação de leitor de PDF)
+var pages=[].slice.call(document.querySelectorAll('.page'));
+var cur=document.getElementById('curpg'), bar=document.getElementById('bar');
+var io=new IntersectionObserver(function(es){
+  es.forEach(function(e){ if(e.isIntersecting){ cur.textContent=e.target.dataset.pg; } });
+},{rootMargin:"-45% 0px -45% 0px",threshold:0});
+pages.forEach(function(p){io.observe(p)});
+function prog(){
+  var h=document.documentElement, sc=h.scrollTop||document.body.scrollTop;
+  var max=h.scrollHeight-h.clientHeight;
+  bar.style.width=(max>0?(sc/max*100):0)+"%";
+}
+addEventListener('scroll',prog,{passive:true}); prog();
+</script>
+</body>
+</html>
