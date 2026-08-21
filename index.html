@@ -7,6 +7,54 @@
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <meta name="theme-color" content="#323336">
 <meta name="robots" content="noindex">
+<!-- Microsoft Clarity (mesmo projeto do Guia da Pega) -->
+<!-- Clarity carregado sob demanda no bloco abaixo -->
+<!-- End Microsoft Clarity -->
+<!-- Google Tag Manager -->
+<script>
+/* GTM + Clarity carregam na 1a interacao ou quando o navegador fica ocioso (tira do caminho critico) */
+(function(){var w=window,d=document,b=false;function boot(){if(b)return;b=true;
+var s=d.getElementsByTagName('script')[0];
+w.dataLayer=w.dataLayer||[];w.dataLayer.push({'gtm.start':Date.now(),event:'gtm.js'});
+var g=d.createElement('script');g.async=1;g.src='https://www.googletagmanager.com/gtm.js?id=GTM-PTMJZNMZ';s.parentNode.insertBefore(g,s);
+(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(w,d,"clarity","script","xq5004c7qg");}
+var ev=['scroll','touchstart','pointerdown','keydown','mousemove'];function o(){ev.forEach(function(e){w.removeEventListener(e,o);});boot();}
+ev.forEach(function(e){w.addEventListener(e,o,{passive:true});});
+if('requestIdleCallback' in w){requestIdleCallback(boot,{timeout:4000});}else{setTimeout(boot,3500);}})();
+</script>
+<!-- End Google Tag Manager -->
+<!-- Meta Pixel (Guia da Pega - 2 pixels) -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+(function(){
+  /* Garante _fbp/_fbc ANTES do fbq init e do 1o evento (evita fbp vazio na CAPI). */
+  function gc(n){var m=document.cookie.match('(^|; )'+n+'=([^;]+)');return m?decodeURIComponent(m[2]):'';}
+  function sc(n,v){try{document.cookie=n+'='+v+'; path=/; max-age=7776000; domain=.manualdorecemnascido.com.br; SameSite=Lax';}catch(e){}}
+  if(!gc('_fbp')){sc('_fbp','fb.1.'+Date.now()+'.'+Math.floor(1e9+Math.random()*9e9));}
+  if(!gc('_fbc')){try{var fbclid=new URLSearchParams(location.search).get('fbclid');if(fbclid){sc('_fbc','fb.1.'+Date.now()+'.'+fbclid);}}catch(e){}}
+})();
+fbq('init','1662179248394613');fbq('init','1339270591500008');
+(function(){
+  var CAPI='https://n8n-n8n.xktssy.easypanel.host/webhook/guia-capi';
+  function gc(n){var m=document.cookie.match('(^|; )'+n+'=([^;]+)');return m?decodeURIComponent(m[2]):'';}
+  function eid(){return Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,10);}
+  var BOT=navigator.webdriver===true||/bot|crawl|spider|slurp|facebookexternalhit|facebookcatalog|whatsapp|telegram|preview|headless|lighthouse|pagespeed/i.test(navigator.userAgent||'');
+  window.trackMeta=function(ev,cd){
+    var id=eid();
+    try{ if(window.fbq) fbq('track',ev,cd||{},{eventID:id}); }catch(e){}
+    if(BOT) return;
+    try{
+      var p={event_name:ev,event_id:id,event_time:Math.floor(Date.now()/1000),event_source_url:location.href,fbp:gc('_fbp'),fbc:gc('_fbc'),user_agent:navigator.userAgent,custom_data:cd||{}};
+      var blob=new Blob([JSON.stringify(p)],{type:'text/plain'});
+      if(navigator.sendBeacon) navigator.sendBeacon(CAPI,blob);
+      else fetch(CAPI,{method:'POST',mode:'no-cors',keepalive:true,headers:{'Content-Type':'text/plain'},body:JSON.stringify(p)});
+    }catch(e){}
+  };
+  trackMeta('PageView');
+})();
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1662179248394613&ev=PageView&noscript=1"/><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1339270591500008&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="image" href="assets/cover.webp" fetchpriority="high">
@@ -537,6 +585,35 @@ var W=820, zin=document.getElementById('zin'), zout=document.getElementById('zou
 function setW(){document.documentElement.style.setProperty('--maxw',W+'px')}
 zin&&zin.addEventListener('click',function(){W=Math.min(1000,W+80);setW()});
 zout&&zout.addEventListener('click',function(){W=Math.max(560,W-80);setW()});
+</script>
+<script>
+/* tracking Guia da Pega (ebook isca) - ViewContent + InitiateCheckout + fbp/fbc/ua no checkout */
+(function(){
+  var T=window.trackMeta||function(ev,cd){if(window.fbq)fbq('track',ev,cd||{});};
+  function gc(n){var m=document.cookie.match('(^|; )'+n+'=([^;]+)');return m?decodeURIComponent(m[2]):'';}
+  try{
+    var extra=new URLSearchParams();
+    var fbp=gc('_fbp'); if(fbp)extra.append('fbp',fbp);
+    var fbc=gc('_fbc'); if(fbc)extra.append('fbc',fbc);
+    extra.append('ua',navigator.userAgent);
+    var es=extra.toString();
+    if(es)document.querySelectorAll('[data-checkout],[data-checkout-bump]').forEach(function(a){
+      if(/^https?:/i.test(a.href))a.href+=(a.href.indexOf('?')>-1?'&':'?')+es;
+    });
+  }catch(e){}
+  T('ViewContent',{content_name:'Guia da Pega',content_type:'product',value:67.00,currency:'BRL'});
+  document.querySelectorAll('[data-checkout],[data-checkout-bump]').forEach(function(a){
+    a.addEventListener('click',function(e){
+      if(e.ctrlKey||e.metaKey||e.shiftKey||e.button)return;
+      if(!/^https?:/i.test(a.href))return;
+      if(a.getAttribute('data-ic'))return;
+      a.setAttribute('data-ic','1'); e.preventDefault();
+      var dest=a.href;
+      T('InitiateCheckout',{content_name:'Guia da Pega',value:67.00,currency:'BRL'});
+      setTimeout(function(){window.location.href=dest;},250);
+    });
+  });
+})();
 </script>
 </body>
 </html>
