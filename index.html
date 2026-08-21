@@ -233,7 +233,7 @@ details.faq .a p{margin:0}
 </head>
 <body>
 
-<!-- CHECKOUT: trocar pela URL real do checkout Greenn do Guia da Pega quando o Bruno mandar -->
+<!-- CHECKOUT Greenn: constantes CHECKOUT / CHECKOUT_BUMP no <script> no fim do arquivo -->
 <div class="bar">
   <div class="doc"><span class="pdf">PDF</span><span class="fname">meu-bebe-nao-sacia-no-seio.pdf</span></div>
   <div class="tools">
@@ -507,11 +507,16 @@ details.faq .a p{margin:0}
 (function(){var s=new URLSearchParams(location.search).get('shot');if(!s)return;
 document.querySelectorAll('.page').forEach(function(p){if(p.dataset.pg!==s){p.style.display='none';}else{p.style.minHeight='auto';}});})();
 
-// checkout (trocar CHECKOUT/BUMP pela URL real do Greenn)
-var CHECKOUT = "https://tdapocket.manualdorecemnascido.com.br";
-var CHECKOUT_BUMP = "https://tdapocket.manualdorecemnascido.com.br";
-document.querySelectorAll('[data-checkout]').forEach(function(a){a.href=CHECKOUT});
-document.querySelectorAll('[data-checkout-bump]').forEach(function(a){a.href=CHECKOUT_BUMP});
+// checkout Greenn (Guia da Pega 136511 / Guia + Acompanhamento)
+var CHECKOUT = "https://payfast.greenn.com.br/136511/offer/aEhvHw?ch_id=24103&b_id_1=119667&b_offer_1=IMS3KM&b_id_2=119638&b_offer_2=epeT0P";
+var CHECKOUT_BUMP = "https://payfast.greenn.com.br/fgbgnkq/offer/Nb7BTs?ch_id=142481&b_id_1=119667&b_offer_1=IMS3KM&b_id_2=119638&b_offer_2=epeT0P";
+// repassa UTM/fbclid/gclid/ttclid da página pro checkout (atribuição)
+function ckWithParams(base){
+  var q = location.search.replace(/^\?/,'');
+  return q ? base + (base.indexOf('?')>-1 ? '&' : '?') + q : base;
+}
+document.querySelectorAll('[data-checkout]').forEach(function(a){a.href=ckWithParams(CHECKOUT)});
+document.querySelectorAll('[data-checkout-bump]').forEach(function(a){a.href=ckWithParams(CHECKOUT_BUMP)});
 
 // indicador de página + barra de progresso (sensação de leitor de PDF)
 var pages=[].slice.call(document.querySelectorAll('.page'));
