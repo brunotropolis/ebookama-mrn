@@ -117,7 +117,7 @@ strong{color:var(--berry-deep)}
 .sign{border:1px solid var(--line); border-radius:16px; margin:16px 0; background:#fffaf6; overflow:hidden}
 .sign .sig-img{width:100%; height:210px; background:#f0e5df}
 .sign .sig-img img{width:100%; height:100%; object-fit:cover; display:block}
-.sign .sig-img img.pos-low{object-position:center 30%}
+.sign .sig-img img.pos-low{object-position:center 58%}
 .sign .sig-body{padding:16px 22px 18px}
 .sign h3{margin:0 0 8px; font-size:1.12em; color:var(--berry-deep)}
 .sign p:last-child{margin-bottom:0}
@@ -137,25 +137,27 @@ strong{color:var(--berry-deep)}
 /* CTA */
 .buy{
   display:flex; align-items:center; justify-content:center; gap:8px; text-align:center; text-decoration:none;
-  background:linear-gradient(135deg,#16a34a,#2fbf6f); color:#fff; font-weight:800; font-family:"Nunito";
-  padding:17px 26px; border-radius:14px; font-size:1.12em; letter-spacing:.2px;
-  box-shadow:0 14px 26px -12px rgba(22,163,74,.8); margin:8px 0;
-  transition:transform .12s ease, box-shadow .12s ease;
+  background:linear-gradient(135deg,#0c6b30,#12833d); color:#fff; font-weight:800; font-family:"Nunito"; letter-spacing:1.4px;
+  padding:17px 26px; border-radius:14px; font-size:1.14em;
+  box-shadow:0 14px 26px -12px rgba(12,107,48,.85); margin:8px 0;
+  animation:pulseUp 1.9s ease-in-out infinite;
 }
-.buy:hover{transform:translateY(-2px); box-shadow:0 18px 30px -12px rgba(22,163,74,.85)}
-.buy.big{font-size:1.22em; padding:20px 26px}
+.buy:hover{animation:none; transform:translateY(-3px); box-shadow:0 20px 34px -12px rgba(12,107,48,.9)}
+.buy.big{font-size:1.32em; padding:20px 26px}
+@keyframes pulseUp{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+@media (prefers-reduced-motion:reduce){.buy{animation:none}}
 .buy-soft{
   display:inline-flex; align-items:center; gap:8px; text-decoration:none;
   background:#fff; color:var(--berry-deep); border:2px solid var(--berry);
-  font-weight:800; padding:12px 22px; border-radius:12px; margin-top:6px;
+  font-weight:800; padding:12px 22px; border-radius:12px; margin-top:6px; letter-spacing:.5px;
   transition:background .12s, color .12s;
 }
 .buy-soft:hover{background:var(--berry); color:#fff}
 .cta-soft{background:var(--cream); border-radius:16px; padding:22px; margin:28px 0 0; text-align:center}
 .cta-soft p{margin:0 0 4px; font-weight:700}
 
-.reassure{display:flex; gap:14px; flex-wrap:wrap; justify-content:center; margin-top:12px; font-size:13.5px; color:var(--muted); font-weight:700}
-.reassure span{display:inline-flex; align-items:center; gap:6px}
+.reassure{display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-top:14px}
+.reassure span{display:inline-flex; align-items:center; gap:8px; text-align:left; font-size:12.5px; color:var(--ink); font-weight:700; background:#fff; border:1px solid var(--line); border-radius:11px; padding:9px 13px; box-shadow:0 4px 10px -6px rgba(120,70,80,.3)}
 
 /* oferta box */
 .offer{
@@ -166,24 +168,36 @@ strong{color:var(--berry-deep)}
 .offer .head .name{font-family:"Poppins",sans-serif; font-weight:600; font-size:1.7em}
 .offer .head .sub{opacity:.92; font-size:.95em; margin-top:2px}
 .offer .body{padding:24px}
-.price{text-align:center; margin:4px 0 18px}
-.price .big{font-family:"Poppins",sans-serif; font-size:2.6em; color:var(--berry-deep); font-weight:600; line-height:1}
-.price .cents{font-size:.5em; vertical-align:super}
-.price .desc{color:var(--muted); font-weight:700; margin-top:4px}
+.price{margin:4px 0 18px; background:linear-gradient(135deg,#3a2348,#281634); border-radius:16px; padding:20px 18px 16px; text-align:center; box-shadow:0 14px 28px -16px rgba(40,22,52,.8)}
+.price .big{font-family:"Poppins",sans-serif; font-size:3.2em; color:#fff; font-weight:800; line-height:1; letter-spacing:-1.5px}
+.price .cents{font-size:.32em; vertical-align:super; color:#f4d9a6; font-weight:700; letter-spacing:0; margin-left:3px}
+.price .desc{color:#eec6df; font-weight:700; margin-top:9px; font-size:.9em}
 .bump{
-  margin-top:16px; border:2px dashed var(--terra); border-radius:14px; padding:16px 18px; background:#fff7f2;
+  margin-top:18px; border:2px solid #1faa53; border-radius:16px; padding:15px 16px; background:#f0fbf4;
+  box-shadow:0 12px 26px -16px rgba(31,170,83,.6);
 }
-.bump .tag{display:inline-block; font-size:11px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:var(--terra); background:#fdece2; padding:4px 10px; border-radius:999px; margin-bottom:8px}
-.bump b{font-family:"Poppins",sans-serif; color:var(--ink)}
-.bump .buy{margin-top:12px}
+.bump-head{display:flex; align-items:center; gap:9px; margin-bottom:11px}
+.bump-head .wa{width:28px; height:28px; flex:0 0 auto; color:#fff; background:#25d366; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; box-shadow:0 5px 12px -4px rgba(37,211,102,.7)}
+.bump-head .wa svg{width:16px; height:16px}
+.bump-head .tag{font-size:11px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:#0c6b30}
+.bump-row{display:flex; align-items:center; gap:14px}
+.bump-txt{flex:1; min-width:0}
+.bump-txt b{display:block; font-family:"Poppins",sans-serif; color:var(--ink); font-size:1.04em; margin-bottom:3px}
+.bump-txt span{font-size:.88em; color:var(--muted); line-height:1.4}
+.bump-price{flex:0 0 auto; font-family:"Poppins",sans-serif; font-weight:800; font-size:1.4em; color:#0c6b30; background:#d6f5e2; border:1px solid #a9e6c2; border-radius:12px; padding:8px 14px; white-space:nowrap}
+.bump .buy{margin-top:14px}
 
 /* Day */
-.author{display:flex; gap:22px; align-items:flex-start; margin:6px 0 20px; flex-wrap:wrap}
-.author img{width:130px; height:130px; border-radius:50%; object-fit:cover; box-shadow:0 12px 26px -12px rgba(143,58,89,.7); flex:0 0 auto}
-.stats{display:flex; gap:10px; flex-wrap:wrap; margin-top:10px}
-.stats .s{background:var(--cream); border-radius:12px; padding:10px 14px; text-align:center; flex:1 1 120px}
-.stats .s b{display:block; font-family:"Poppins",sans-serif; font-size:1.25em; color:var(--berry-deep)}
-.stats .s span{font-size:12px; color:var(--muted); font-weight:700}
+.author{display:block; text-align:center; margin:12px 0 22px}
+.author .day-photo{width:172px; height:172px; border-radius:50%; object-fit:cover; box-shadow:0 18px 36px -14px rgba(143,58,89,.75); border:4px solid #fff; margin:0 auto 14px; display:block}
+.author .day-desc{font-size:1.06em; margin:0 auto 16px; max-width:36ch}
+.stats{display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-top:4px}
+.stats .s{background:var(--cream); border-radius:14px; padding:12px 10px; text-align:center; flex:1 1 130px; min-width:118px}
+.stats .s .ic{display:inline-flex; margin-bottom:5px}
+.stats .s .ic svg{width:22px; height:22px}
+.stats .s .ic-alunas{color:#b24e72}.stats .s .ic-yt{color:#ff0000}.stats .s .ic-ig{color:#e1306c}.stats .s .ic-tk{color:#111}
+.stats .s b{display:block; font-family:"Poppins",sans-serif; font-size:1.32em; color:var(--berry-deep)}
+.stats .s .lbl{font-size:12px; color:var(--muted); font-weight:700}
 
 /* FAQ */
 details.faq{border:1px solid var(--line); border-radius:12px; margin:12px 0; background:#fffaf6; overflow:hidden}
@@ -351,7 +365,7 @@ details.faq .a p{margin:0}
     <div class="cta-soft">
       <p>Reconheceu um ou mais desses sinais no seu bebê?</p>
       <p style="font-weight:400;color:var(--muted);margin-bottom:14px">Existe um jeito rápido de ajustar isso.</p>
-      <a class="buy-soft" href="#oferta">Quero!! →</a>
+      <a class="buy-soft" href="#oferta">QUERO →</a>
     </div>
     <div class="pnum">5</div>
   </article>
@@ -382,7 +396,7 @@ details.faq .a p{margin:0}
     <div class="cta-soft">
       <p>Dá pra facilitar a pega pra mãe e pro bebê</p>
       <p style="font-weight:400;color:var(--muted);margin-bottom:14px">Para amamentar de forma tranquila e sem desconforto.</p>
-      <a class="buy-soft" href="#oferta">Quero!! →</a>
+      <a class="buy-soft" href="#oferta">QUERO →</a>
     </div>
     <div class="pnum">6</div>
   </article>
@@ -394,10 +408,10 @@ details.faq .a p{margin:0}
     <p>Em poucos minutos você aprende a deixar a amamentação confortável para vocês dois. A partir daí:</p>
     <div class="media"><div class="frame"><img src="assets/solucao.jpg" alt="Mãe amamentando tranquila" loading="lazy"></div></div>
     <ul class="checks plus">
-      <li><b>O bebê extrai mais leite em menos tempo</b></li>
-      <li><b>Os lábios ficam relaxados</b>, os calos cicatrizam e não voltam</li>
-      <li><b>Ele fica saciado por mais tempo</b>, o intervalo entre as mamadas aumenta</li>
-      <li><b>A dor vai embora</b>, mesmo com o seio machucado, porque ele passa a sugar de um jeito que não machuca</li>
+      <li><b>O bebê extrai mais leite em menos tempo.</b></li>
+      <li><b>Os lábios ficam relaxados,</b> os calos cicatrizam e não voltam.</li>
+      <li><b>Ele fica saciado por mais tempo,</b> o intervalo entre as mamadas aumenta.</li>
+      <li><b>A dor vai embora,</b> mesmo com o seio machucado, porque ele passa a sugar de um jeito que não machuca.</li>
     </ul>
 
     <div class="offer">
@@ -407,18 +421,21 @@ details.faq .a p{margin:0}
       </div>
       <div class="body">
         <div class="price">
-          <div class="big">R$67<span class="cents"> à vista</span></div>
-          <div class="desc">no Pix · ou 12x de R$6,89</div>
+          <div class="big">R$67<span class="cents">à vista</span></div>
+          <div class="desc">ou 12x de R$6,89</div>
         </div>
-        <a class="buy big" href="#" data-checkout>Quero!!</a>
+        <a class="buy big" href="#" data-checkout>QUERO</a>
         <div class="reassure">
           <span>⚡ Acesso imediato</span><span>🔒 Compra 100% segura</span><span>↩️ Garantia de 7 dias</span>
         </div>
 
         <div class="bump">
-          <span class="tag">Adicione se quiser</span>
-          <p><b>Guia da Pega + Consultora</b>: acompanhamento com consultora de amamentação direto no seu WhatsApp, pra te orientar e tirar suas dúvidas, por <strong>+R$87</strong>.</p>
-          <a class="buy" href="#" data-checkout-bump>Quero!!</a>
+          <div class="bump-head"><span class="wa"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.15-1.7-.83-1.96-.93-.26-.1-.45-.15-.64.15-.19.29-.74.93-.9 1.12-.17.19-.33.22-.62.07-.29-.15-1.22-.45-2.32-1.43-.86-.76-1.44-1.7-1.6-1.99-.17-.29-.02-.45.13-.6.13-.13.29-.34.44-.51.15-.17.19-.29.29-.48.1-.19.05-.36-.02-.51-.07-.15-.64-1.55-.88-2.12-.23-.55-.47-.48-.64-.49h-.55c-.19 0-.51.07-.77.36-.26.29-1.01.99-1.01 2.41 0 1.42 1.04 2.8 1.18 2.99.15.19 2.05 3.13 4.96 4.39.69.3 1.23.48 1.65.61.69.22 1.32.19 1.82.12.56-.08 1.7-.7 1.94-1.36.24-.67.24-1.24.17-1.36-.07-.12-.26-.19-.55-.34zM12 2a10 10 0 0 0-8.6 15.05L2 22l5.05-1.32A10 10 0 1 0 12 2zm0 18.2c-1.5 0-2.98-.4-4.27-1.17l-.3-.18-3 .78.8-2.92-.2-.31A8.2 8.2 0 1 1 12 20.2z"/></svg></span><span class="tag">Adicione se quiser</span></div>
+          <div class="bump-row">
+            <div class="bump-txt"><b>Guia da Pega + Consultora</b><span>Acompanhamento com consultora de amamentação direto no seu WhatsApp, pra te orientar e tirar suas dúvidas.</span></div>
+            <div class="bump-price">+R$87</div>
+          </div>
+          <a class="buy" href="#" data-checkout-bump>QUERO</a>
         </div>
       </div>
     </div>
@@ -430,15 +447,13 @@ details.faq .a p{margin:0}
     <span class="kicker">Quem vai te ensinar</span>
     <h2 class="title">Olá, eu sou a <span class="em">Dayane Dos Anjos</span></h2>
     <div class="author">
-      <img src="https://bio.manualdorecemnascido.com.br/assets/day/profile.jpg" alt="Dayane Dos Anjos">
-      <div>
-        <p style="margin-bottom:10px">Consultora de amamentação, sono e cuidados com o bebê.</p>
-        <div class="stats">
-          <div class="s"><b>+21 mil</b><span>alunas</span></div>
-          <div class="s"><b>+799 mil</b><span>inscritos</span></div>
-          <div class="s"><b>+625 mil</b><span>seguidores</span></div>
-          <div class="s"><b>+620 mil</b><span>seguidores</span></div>
-        </div>
+      <img class="day-photo" src="https://bio.manualdorecemnascido.com.br/assets/day/profile.jpg" alt="Dayane Dos Anjos">
+      <p class="day-desc">Consultora de amamentação, sono e cuidados com o bebê.</p>
+      <div class="stats">
+        <div class="s"><span class="ic ic-alunas"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-6.7-4.3-9.3-8.1C.9 10.2 1.6 6.9 4.3 5.7c1.9-.8 3.9-.1 5.1 1.4L12 9.9l2.6-2.8c1.2-1.5 3.2-2.2 5.1-1.4 2.7 1.2 3.4 4.5 1.6 7.2C18.7 16.7 12 21 12 21z"/></svg></span><b>+21 mil</b><span class="lbl">alunas</span></div>
+        <div class="s"><span class="ic ic-yt"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.2-.4-4.7a2.5 2.5 0 0 0-1.73-1.73C19.4 5.2 12 5.2 12 5.2s-7.4 0-8.87.37A2.5 2.5 0 0 0 1.4 7.3C1 8.8 1 12 1 12s0 3.2.4 4.7a2.5 2.5 0 0 0 1.73 1.73c1.47.37 8.87.37 8.87.37s7.4 0 8.87-.37A2.5 2.5 0 0 0 22.6 16.7C23 15.2 23 12 23 12zM9.75 15.02V8.98L15.5 12l-5.75 3.02z"/></svg></span><b>+799 mil</b><span class="lbl">inscritos</span></div>
+        <div class="s"><span class="ic ic-ig"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.21 8.8 2.2 12 2.2zm0 3.06A4.94 4.94 0 1 0 12 16.94 4.94 4.94 0 0 0 12 5.26zm0 8.14A3.2 3.2 0 1 1 12 8.8a3.2 3.2 0 0 1 0 6.4zm6.3-8.34a1.15 1.15 0 1 1-2.3 0 1.15 1.15 0 0 1 2.3 0z"/></svg></span><b>+625 mil</b><span class="lbl">seguidores</span></div>
+        <div class="s"><span class="ic ic-tk"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.8a4.3 4.3 0 0 1-1-2.8h-3.1v12.3a2.4 2.4 0 1 1-2.4-2.4c.2 0 .5 0 .7.1V9.8a5.6 5.6 0 0 0-.7-.05A5.5 5.5 0 1 0 15.6 15.3V9.3a7.3 7.3 0 0 0 4.3 1.4V7.6a4.3 4.3 0 0 1-3.3-1.8z"/></svg></span><b>+620 mil</b><span class="lbl">seguidores</span></div>
       </div>
     </div>
     <p>As primeiras semanas decidem o sucesso da amamentação, mas é justamente quando a mãe fica mais sozinha, sem uma orientação clara. Quando a dor, a insegurança e o cansaço tomam conta, o desmame precoce acaba ganhando espaço em muitas famílias.</p>
@@ -478,8 +493,8 @@ details.faq .a p{margin:0}
     <div class="media"><div class="frame"><img src="assets/feliz.jpg" alt="Bebê mamando feliz" loading="lazy"></div></div>
 
     <div style="margin-top:26px">
-      <a class="buy big" href="#" data-checkout>Quero Guia da Pega · R$67</a>
-      <a class="buy" href="#" data-checkout-bump style="background:linear-gradient(135deg,#8f3a59,#b24e72);box-shadow:0 14px 26px -12px rgba(143,58,89,.8)">Quero Guia da Pega + Acompanhamento · R$164</a>
+      <a class="buy big" href="#" data-checkout>QUERO · R$67</a>
+      <a class="buy" href="#" data-checkout-bump style="background:linear-gradient(135deg,#6a2f52,#8f3a59);box-shadow:0 14px 26px -12px rgba(143,58,89,.8)">QUERO + ACOMPANHAMENTO · R$164</a>
       <div class="reassure" style="margin-top:16px"><span>⚡ Acesso imediato</span><span>🔒 Compra segura</span><span>↩️ Garantia de 7 dias</span></div>
     </div>
     <div class="pnum">10</div>
