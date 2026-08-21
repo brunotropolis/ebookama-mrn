@@ -9,7 +9,7 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500;1,600&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500;1,600&family=Nunito:wght@400;600;700;800&family=Lora:ital@1&display=swap" rel="stylesheet">
 <style>
 :root{
   --backdrop1:#3c3d40; --backdrop2:#28292b;
@@ -137,9 +137,9 @@ strong{color:var(--berry-deep)}
 /* CTA */
 .buy{
   display:flex; align-items:center; justify-content:center; gap:8px; text-align:center; text-decoration:none;
-  background:linear-gradient(135deg,#0c6b30,#12833d); color:#fff; font-weight:800; font-family:"Nunito"; letter-spacing:1.4px;
-  padding:17px 26px; border-radius:14px; font-size:1.14em;
-  box-shadow:0 14px 26px -12px rgba(12,107,48,.85); margin:8px 0;
+  background:linear-gradient(135deg,#16a34a,#12833c); color:#fff; font-weight:800; font-family:"Nunito"; letter-spacing:1.4px;
+  padding:17px 28px; border-radius:999px; font-size:1.14em;
+  box-shadow:0 12px 28px -8px rgba(22,163,74,.55); margin:8px 0;
   animation:pulseUp 1.9s ease-in-out infinite;
 }
 .buy:hover{animation:none; transform:translateY(-3px); box-shadow:0 20px 34px -12px rgba(12,107,48,.9)}
@@ -159,36 +159,28 @@ strong{color:var(--berry-deep)}
 .reassure{display:flex; flex-direction:column; gap:8px; margin:14px auto 0; width:fit-content; max-width:100%}
 .reassure span{display:flex; align-items:center; gap:9px; justify-content:flex-start; text-align:left; font-size:13px; color:var(--ink); font-weight:700; background:#fff; border:1px solid var(--line); border-radius:11px; padding:10px 15px; box-shadow:0 4px 10px -6px rgba(120,70,80,.3)}
 
-/* oferta box */
-.offer{
-  margin-top:26px; border:2px solid var(--berry); border-radius:20px; overflow:hidden;
-  box-shadow:0 20px 44px -24px rgba(143,58,89,.6);
-}
-.offer .head{background:linear-gradient(135deg,var(--berry),var(--berry-deep)); color:#fff; padding:22px 24px; text-align:center}
-.offer .head .name{font-family:"Poppins",sans-serif; font-weight:600; font-size:1.7em}
-.offer .head .sub{opacity:.92; font-size:.95em; margin-top:2px}
-.offer .body{padding:24px}
-.price{margin:4px 0 18px; background:linear-gradient(135deg,#3a2348,#281634); border-radius:16px; padding:20px 18px 16px; text-align:center; box-shadow:0 14px 28px -16px rgba(40,22,52,.8)}
-.price .big{font-family:"Poppins",sans-serif; font-size:3.2em; color:#fff; font-weight:800; line-height:1; letter-spacing:-1.5px}
-.price .cents{font-size:.32em; vertical-align:super; color:#f4d9a6; font-weight:700; letter-spacing:0; margin-left:3px}
-.price .desc{color:#eec6df; font-weight:700; margin-top:9px; font-size:.9em}
-.bump{
-  margin-top:18px; border:2px solid #1faa53; border-radius:16px; padding:15px 16px; background:#f0fbf4;
-  box-shadow:0 12px 26px -16px rgba(31,170,83,.6);
-}
-.bump-head{display:flex; align-items:center; gap:9px; margin-bottom:11px}
-.bump-head .wa{width:28px; height:28px; flex:0 0 auto; color:#fff; background:#25d366; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; box-shadow:0 5px 12px -4px rgba(37,211,102,.7)}
-.bump-head .wa svg{width:16px; height:16px}
-.bump-head .tag{font-size:11px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:#0c6b30}
-.bump-row{display:flex; align-items:center; gap:14px}
-.bump-txt{flex:1; min-width:0}
-.bump-txt b{display:block; font-family:"Poppins",sans-serif; color:var(--ink); font-size:1.04em; margin-bottom:3px}
-.bump-txt span{font-size:.88em; color:var(--muted); line-height:1.4}
-.bump-combo{margin-top:13px; text-align:center; background:#d6f5e2; border:1px solid #a9e6c2; border-radius:12px; padding:11px 12px}
-.bump-combo .l1{font-family:"Poppins",sans-serif; font-weight:800; color:#0c6b30; font-size:1.02em}
-.bump-combo .l1 b{font-size:1.25em}
-.bump-combo .l2{display:block; font-weight:700; color:#3f6b50; font-size:.82em; margin-top:2px}
-.bump .buy{margin-top:14px}
+/* oferta — estilo materia (navy + verde) */
+.offer{max-width:462px; margin:26px auto 0}
+.buy-card{background:#0f1c3f; border-radius:18px; padding:30px 24px; text-align:center; box-shadow:0 18px 44px rgba(15,28,63,.32)}
+.buy-card .pname{font-family:"Poppins",sans-serif; font-weight:800; font-size:1.5em; color:#fff; margin-bottom:4px}
+.buy-card .cond{font-family:"Lora",Georgia,serif; font-style:italic; color:#aab6d6; font-size:1.02em; line-height:1.4; margin-bottom:16px}
+.buy-card .price-box{margin:8px 0 20px}
+.buy-card .price{font-family:"Poppins",sans-serif; font-weight:800; color:#fff; font-size:clamp(3rem,13vw,4.2rem); line-height:1; margin:0}
+.buy-card .cash{color:#cdd6ea; font-size:.95em; font-weight:600; margin:12px 0 0}
+.buy-card .perks{list-style:none; padding:0; margin:22px auto 0; width:fit-content; text-align:left}
+.buy-card .perks li{display:flex; align-items:center; gap:10px; color:#e6ebf5; font-weight:600; font-size:1em; margin:11px 0}
+.buy-card .perks li::before{content:"✓"; color:#3ee07f; font-weight:800; font-size:1.05em}
+/* combo */
+.bump{max-width:462px; margin:20px auto 0; background:#0f5132; border:1px solid #0a3d25; border-radius:16px; padding:26px 22px; text-align:center; box-shadow:0 14px 34px rgba(15,81,50,.3)}
+.bump .tag{display:inline-flex; align-items:center; gap:7px; font-family:"Nunito"; font-weight:800; font-size:.72em; letter-spacing:.08em; text-transform:uppercase; color:#0f5132; background:#fff; padding:6px 13px; border-radius:8px; margin-bottom:12px}
+.bump .tag .wa{width:15px; height:15px; color:#25d366; display:inline-flex}
+.bump .cname{font-family:"Poppins",sans-serif; font-weight:800; color:#fff; font-size:1.3em; margin-bottom:8px}
+.bump .cdesc{color:#d7ebdf; font-size:.95em; line-height:1.5; margin-bottom:16px}
+.bump-price{background:#0f1c3f; border-radius:12px; padding:15px 14px 14px; margin:0 auto 18px; max-width:360px}
+.bump-price .l1{display:block; font-family:"Nunito"; font-weight:800; font-size:.72em; letter-spacing:.08em; text-transform:uppercase; color:#aab6d6}
+.bump-price .l2{display:block; font-family:"Poppins",sans-serif; font-weight:800; color:#fff; font-size:2.5em; line-height:1.05; margin:2px 0}
+.bump-price .l3{display:block; color:#aab6d6; font-size:.88em}
+.bump .buy{margin-top:2px}
 
 /* Day */
 .author{display:block; text-align:center; margin:12px 0 22px}
@@ -418,26 +410,31 @@ details.faq .a p{margin:0}
     </ul>
 
     <div class="offer">
-      <div class="head">
-        <div class="name">Guia da Pega</div>
-        <div class="sub">Corrija a amamentação com uma condição especial</div>
+      <div class="buy-card">
+        <div class="pname">Guia da Pega</div>
+        <div class="cond">Corrija a amamentação com uma condição especial</div>
+        <div class="price-box">
+          <p class="price">R$ 67</p>
+          <p class="cash">à vista ou em até 12x de R$ 6,89</p>
+        </div>
+        <a class="buy" href="#" data-checkout>QUERO</a>
+        <ul class="perks">
+          <li>Acesso imediato</li>
+          <li>Compra 100% segura</li>
+          <li>Garantia de 7 dias</li>
+        </ul>
       </div>
-      <div class="body">
-        <div class="price">
-          <div class="big">R$ 67</div>
-          <div class="desc">à vista ou em até 12x de R$ 6,89</div>
-        </div>
-        <a class="buy big" href="#" data-checkout>QUERO</a>
-        <div class="reassure">
-          <span>⚡ Acesso imediato</span><span>🔒 Compra 100% segura</span><span>↩️ Garantia de 7 dias</span>
-        </div>
 
-        <div class="bump">
-          <div class="bump-head"><span class="wa"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.15-1.7-.83-1.96-.93-.26-.1-.45-.15-.64.15-.19.29-.74.93-.9 1.12-.17.19-.33.22-.62.07-.29-.15-1.22-.45-2.32-1.43-.86-.76-1.44-1.7-1.6-1.99-.17-.29-.02-.45.13-.6.13-.13.29-.34.44-.51.15-.17.19-.29.29-.48.1-.19.05-.36-.02-.51-.07-.15-.64-1.55-.88-2.12-.23-.55-.47-.48-.64-.49h-.55c-.19 0-.51.07-.77.36-.26.29-1.01.99-1.01 2.41 0 1.42 1.04 2.8 1.18 2.99.15.19 2.05 3.13 4.96 4.39.69.3 1.23.48 1.65.61.69.22 1.32.19 1.82.12.56-.08 1.7-.7 1.94-1.36.24-.67.24-1.24.17-1.36-.07-.12-.26-.19-.55-.34zM12 2a10 10 0 0 0-8.6 15.05L2 22l5.05-1.32A10 10 0 1 0 12 2zm0 18.2c-1.5 0-2.98-.4-4.27-1.17l-.3-.18-3 .78.8-2.92-.2-.31A8.2 8.2 0 1 1 12 20.2z"/></svg></span><span class="tag">Adicione se quiser</span></div>
-          <div class="bump-txt"><b>Guia da Pega + Consultora</b><span>Acompanhamento com consultora de amamentação direto no seu WhatsApp, pra te orientar e tirar suas dúvidas.</span></div>
-          <div class="bump-combo"><span class="l1">O COMBO FICARÁ POR <b>R$ 147</b></span><span class="l2">à vista ou em até 12x de R$ 15,11</span></div>
-          <a class="buy" href="#" data-checkout-bump>QUERO</a>
+      <div class="bump">
+        <span class="tag"><span class="wa"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.15-1.7-.83-1.96-.93-.26-.1-.45-.15-.64.15-.19.29-.74.93-.9 1.12-.17.19-.33.22-.62.07-.29-.15-1.22-.45-2.32-1.43-.86-.76-1.44-1.7-1.6-1.99-.17-.29-.02-.45.13-.6.13-.13.29-.34.44-.51.15-.17.19-.29.29-.48.1-.19.05-.36-.02-.51-.07-.15-.64-1.55-.88-2.12-.23-.55-.47-.48-.64-.49h-.55c-.19 0-.51.07-.77.36-.26.29-1.01.99-1.01 2.41 0 1.42 1.04 2.8 1.18 2.99.15.19 2.05 3.13 4.96 4.39.69.3 1.23.48 1.65.61.69.22 1.32.19 1.82.12.56-.08 1.7-.7 1.94-1.36.24-.67.24-1.24.17-1.36-.07-.12-.26-.19-.55-.34zM12 2a10 10 0 0 0-8.6 15.05L2 22l5.05-1.32A10 10 0 1 0 12 2zm0 18.2c-1.5 0-2.98-.4-4.27-1.17l-.3-.18-3 .78.8-2.92-.2-.31A8.2 8.2 0 1 1 12 20.2z"/></svg></span>Leve com acompanhamento</span>
+        <div class="cname">Guia da Pega + Consultora</div>
+        <div class="cdesc">Acompanhamento com uma consultora de amamentação direto no seu WhatsApp, pra te orientar e tirar suas dúvidas no dia a dia.</div>
+        <div class="bump-price">
+          <span class="l1">O combo ficará por</span>
+          <span class="l2">R$ 147</span>
+          <span class="l3">à vista ou em até 12x de R$ 15,11</span>
         </div>
+        <a class="buy" href="#" data-checkout-bump>QUERO O COMBO</a>
       </div>
     </div>
     <div class="pnum">7</div>
